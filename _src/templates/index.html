@@ -10,7 +10,30 @@
 </head>
 
 <body>
-  <script src="./js/main.js"></script>
+  <header class="header">
+    <h1 class="header__title">Buscador de series</h1>
+    <form class="header__form js-form">
+      <input class="header__input js-input" type="text">
+      <button class="header__button js-button" type="submit">Search</button>
+    </form>
+  </header>
+  <main class="main">
+    <aside class="main__seriesFav favorites js-favorites">
+      <div class="favorites__containerFav js-favContainer">
+        <h2 class="favorites__titleFav">Mis series favoritas</h2>
+        <hr>
+      </div>
+    </aside>
+    <section class="main__seriesList searchSeries js-search">
+      <div class="searchSeries__containerSeries js-searchContainer">
+        <h2 class="searchSeries__titleSearch">Mi búsqueda</h2>
+        <hr>
+      </div>
+    </section>
+
+
+  </main>
+  <script src="./assets/js/main.js"></script>
 </body>
 
 </html>

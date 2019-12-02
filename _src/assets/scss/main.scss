@@ -1,0 +1,38 @@
+.header {
+    color: maroon;
+&__title{
+
+}
+&__form{
+
+}
+&__input{
+
+}
+&__button{
+    cursor: pointer;
+}
+}
+.main{
+    color: brown
+
+}
+.favorites{
+    &__containerFav{
+
+    }
+&__titleFav{
+
+}
+}
+.searchSeries{
+&__containerSeries{
+    background-color:cadetblue;
+}
+&__titleSearch{
+
+}
+}
+.js-selected{
+    background-color: magenta;
+}
