@@ -6,14 +6,29 @@ let searchContainer = document.querySelector(".js-searchContainer");
 let favContainer = document.querySelector(".js-favContainer");
 let series = [];
 let searchSeries;
-let getServerData;
 let showSeries;
-let addFavorite;
+let showFavorites;
+let addFavorites;
 let favoritesSeries = [];
+let addToLs;
+let getToLs;
 
+
+addToLs = function () {
+    localStorage.setItem("favorite", JSON.stringify(favoritesSeries));
+}
+getToLs = function () {
+
+    favoritesSeries = JSON.parse(localStorage.getItem("favorite")) || [];
+}
+getToLs();
 
 // SEARCH:
 searchSeries = function (ev) {
+
+    getToLs();
+
+
     ev.preventDefault();
     fetch(`http://api.tvmaze.com/search/shows?q=${inputElement.value}`)
         .then(function (response) {
@@ -38,110 +53,110 @@ searchSeries = function (ev) {
 
 // PINTAR SERIES:
 showSeries = function (series) {
-    searchContainer.innerHTML = "";
-    /* console.log(series); */
-    let ulEl, liEl, imgEl, h3El, textNode, idEl, favoriteIndex, isFavorite;
-    for (let serie of series) {
-        idEl = serie.show.id;
-        favoriteIndex = favoritesSeries.indexOf(idEl);
-        isFavorite = favoriteIndex !== -1;
-        /*  console.log("Fav:", favoritesSeries, "Id actual:", idEl, "¿Está:?", isFavorite); */
-        if (isFavorite === true) {
-            liEl = document.createElement("li");
-            liEl.classList.add("js-li");
-            liEl.classList.add("js-selected");
-        } else {
-            ulEl = document.createElement("ul");
-            ulEl.classList.add("js-series");
-            /* console.log(serie.show.image); */
-
-            liEl = document.createElement("li");
-            liEl.classList.add("js-li");
-
-
-            imgEl = document.createElement("img");
-            imgEl.classList.add("js-img");
-            if (serie.show.image !== null) {
-                imgEl.src = serie.show.image.medium;
-            } else {
-                imgEl.src = ("https://via.placeholder.com/210x295/ffffff/666666/?text = TV");
-            }
-            /* console.log(imgEl); */
-
-            h3El = document.createElement("h3");
-            h3El.classList.add("js-title");
-
-            textNode = document.createTextNode(`${serie.show.name}`);
-            /* console.log(textNode); */
-
-            h3El.appendChild(textNode);
-            liEl.appendChild(imgEl);
-            liEl.appendChild(h3El);
-            liEl.id = serie.show.id;
-            ulEl.appendChild(liEl);
-            /* console.log(ulEl); */
-            searchContainer.appendChild(ulEl);
-
-            // AÑADIR A FAVORITOS:
-            // 1º Listen series(orejillas)
-            liEl.addEventListener("click", addFavorite);
-        }
-    }
-}
-// AÑADIR A FAVORITOS:
-// 2º Añadir series
-addFavorite = function (ev) {
-    let idEl, favoriteIndex, isFavorite;
     let ulEl, liEl, imgEl, h3El, textNode;
-    let clickedId = parseInt(ev.currentTarget.id);
-    favoriteIndex = favoritesSeries.indexOf(clickedId);
+    searchContainer.innerHTML = "";
+
+    ulEl = document.createElement("div");
+    ulEl.classList.add("js-series");
     for (let serie of series) {
 
-        idEl = serie.show.id;
-        favoriteIndex = favoritesSeries.indexOf(idEl);
-        isFavorite = favoriteIndex !== -1;
-        if (isFavorite === true) {
-            favoritesSeries.splice(favoriteIndex, 1);
+        liEl = document.createElement("li");
+        liEl.classList.add("js-li");
 
-            ulEl = document.createElement("ul");
-            ulEl.classList.add("js-series");
-
-            liEl = document.createElement("li");
-            liEl.classList.add("js-li");
-            liEl.classList.add("js-selected");
-
-            imgEl = document.createElement("img");
-            imgEl.classList.add("js-img");
-            if (serie.show.image !== null) {
-                imgEl.src = serie.show.image.medium;
-            } else {
-                imgEl.src = ("https://via.placeholder.com/210x295/ffffff/666666/?text = TV");
+        for (let i = 0; i < favoritesSeries.length; i++) {
+            if (`${serie.show.id}` === favoritesSeries[i].id) {
+                liEl.classList.toggle("js-selected");
             }
-            /* console.log(imgEl); */
+        }
 
-            h3El = document.createElement("h3");
-            h3El.classList.add("js-title");
-
-            textNode = document.createTextNode(`${serie.show.name}`);
-            /* console.log(textNode); */
-
-            h3El.appendChild(textNode);
-            liEl.appendChild(imgEl);
-            liEl.appendChild(h3El);
-            liEl.id = serie.show.id;
-            ulEl.appendChild(liEl);
-            /* console.log(ulEl); */
-            favContainer.appendChild(ulEl);
-
+        imgEl = document.createElement("img");
+        imgEl.classList.add("js-img");
+        if (serie.show.image !== null) {
+            imgEl.src = serie.show.image.medium;
         } else {
-            favoritesSeries.push(parseInt(ev.currentTarget.id));
+            imgEl.src = ("https://via.placeholder.com/210x295/ffffff/666666/?text = TV");
+        }
+
+        h3El = document.createElement("h3");
+        h3El.classList.add("js-title");
+
+        textNode = document.createTextNode(`${serie.show.name}`);
+        liEl.id = serie.show.id;
+        liEl.setAttribute("serieId", serie.show.id);
+        h3El.appendChild(textNode);
+
+        liEl.appendChild(imgEl);
+        liEl.appendChild(h3El);
+        liEl.addEventListener("click", addFavorites);
+        ulEl.appendChild(liEl);
+    }
+    searchContainer.appendChild(ulEl);
+}
+showFavorites = function () {
+    let newUl, newLi, newImg, newH3, newTextNode;
+    favContainer.innerHTML = "";
+
+    newUl = document.createElement("div");
+    newUl.classList.add("js-series");
+    for (let serie of series) {
+
+        newLi = document.createElement("li");
+        newLi.classList.add("js-li");
+
+        for (let i = 0; i < favoritesSeries.length; i++) {
+            if (`${serie.show.id}` === favoritesSeries[i].id) {
+                newLi.classList.toggle("js-selected");
+            }
+        }
+
+        newImg = document.createElement("img");
+        newImg.classList.add("js-img");
+        if (serie.show.image !== null) {
+            newImg.src = serie.show.image.medium;
+        } else {
+            newImg.src = ("https://via.placeholder.com/210x295/ffffff/666666/?text = TV");
+        }
+
+        newH3 = document.createElement("h3");
+        newH3.classList.add("js-title");
+
+        newTextNode = document.createTextNode(`${serie.show.name}`);
+        newLi.id = serie.show.id;
+        newLi.setAttribute("serieId", serie.show.id);
+        newH3.appendChild(newTextNode);
+
+        newLi.appendChild(newImg);
+        newLi.appendChild(newH3);
+        newLi.addEventListener("click", addFavorites);
+        newUl.appendChild(newLi);
+    }
+    searchContainer.appendChild(newUl);
+}
+
+addFavorites = function (ev) {
+    let favObject = {}, foundObj = false, idEl;
+
+    idEl = ev.currentTarget.getAttribute("serieId");
+    console.log(idEl);
+
+    for (let i = 0; i < favoritesSeries.length; i++) {
+
+        if (idEl === favoritesSeries[i].id) {
+            ev.currentTarget.classList.toggle('js-selected');
+            favoritesSeries.splice(i, 1);
+            foundObj = true;
         }
     }
+    if (!foundObj) {
+        ev.currentTarget.classList.toggle('js-selected');
+        favObject["id"] = ev.currentTarget.getAttribute("serieId");
+        favObject["img"] = ev.currentTarget.querySelector(".js-img").src;
+        favObject["title"] = ev.currentTarget.querySelector(".js-title").innerHTML;
+        favoritesSeries.push(favObject);
 
-
-}
+        addToLs();
+    }
+};
 
 // ESCUCHAR BOTÓN:
 buttonElement.addEventListener("click", searchSeries);
-
-//Es
