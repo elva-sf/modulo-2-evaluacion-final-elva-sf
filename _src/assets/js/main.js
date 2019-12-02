@@ -4,11 +4,15 @@ let buttonElement = document.querySelector(".js-button");
 let inputElement = document.querySelector(".js-input");
 let searchContainer = document.querySelector(".js-searchContainer");
 let favContainer = document.querySelector(".js-favContainer");
-let series;
+let series = [];
 let searchSeries;
 let showSeries;
+let addFavorite;
+let idEl;
+let favoritesSeries = [];
 
-// Search
+
+// SEARCH:
 searchSeries = function (ev) {
     ev.preventDefault();
 
@@ -24,14 +28,16 @@ searchSeries = function (ev) {
             } else {
                 console.log("No hemos encontrado datos");
             }
+
         })
         .catch(function (error) {
             console.log("Error al traer los datos del servidor", error)
         })
-
 };
 
-//Pintar Series
+
+
+// PINTAR SERIES:
 showSeries = function (series) {
     /* console.log(series); */
     let ulEl, liEl, imgEl, h3El, textNode;
@@ -42,7 +48,8 @@ showSeries = function (series) {
         /* console.log(serie.show.image); */
 
         liEl = document.createElement("li");
-        liEl.classList.add("js-li")
+        liEl.classList.add("js-li");
+        liEl.classList.add("js-selected");
 
         imgEl = document.createElement("img");
         imgEl.classList.add("js-img");
@@ -53,7 +60,6 @@ showSeries = function (series) {
         }
         /* console.log(imgEl); */
 
-
         h3El = document.createElement("h3");
         h3El.classList.add("js-h3");
 
@@ -63,11 +69,26 @@ showSeries = function (series) {
         h3El.appendChild(textNode);
         liEl.appendChild(imgEl);
         liEl.appendChild(h3El);
+        liEl.id = serie.show.id;
+        idEl = liEl.id;
         ulEl.appendChild(liEl);
         /* console.log(ulEl); */
         searchContainer.appendChild(ulEl);
+
+        // AÑADIR A FAVORITOS:
+        // 1º Listen series(orejillas)
+        liEl.addEventListener("click", addFavorite);
     }
 }
+// AÑADIR A FAVORITOS:
+// 2º Toggle series
+addFavorite = function (ev) {
+    console.log("holi", ev.currentTarget);
 
-//Escuchar
+
+}
+
+
+// ESCUCHAR BOTÓN:
 buttonElement.addEventListener("click", searchSeries);
+

@@ -125,12 +125,12 @@ Echas de menos que el kit haga algo en concreto? Pidelo sin problema a través d
 
 ESTRUCTURA DEL EJERCICIO:
 [x] Estructura básica de HTML
-[] Búsqueda -> ramita "search"
+[x] CSS básico
+[x] Búsqueda -> ramita "search"
    [x] Fetch para traer los datos
    [x] Parsear o adaptar los datos del servidor
-   [] Pintar
-[] CSS
-[] Marcar como favoritos
+   [x] Pintar
+[] Marcar como favoritos -> ramita "favorites"
    [] Escuchar click en una serie
    [] Identificar la serie que es
    [] Guardar las series favoritas en otro array
