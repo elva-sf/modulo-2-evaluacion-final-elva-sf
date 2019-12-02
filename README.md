@@ -122,3 +122,23 @@ En principio puedes descargar todos los archivos fuera de **\_src/** y sustituir
 ## Falta algo?
 
 Echas de menos que el kit haga algo en concreto? Pidelo sin problema a través de los Issues o si te animas a mejorarlo mándanos un PR :)
+
+ESTRUCTURA DEL EJERCICIO:
+[] Estructura básica de HTML
+[] Búsqueda
+   [] Fetch para traer los datos
+   [] Parsear o adaptar los datos del servidor
+   [] Pintar
+[] CSS
+[] Marcar como favoritos
+   [] Escuchar click en una serie
+   [] Identificar la serie que es
+   [] Guardar las series favoritas en otro array
+   [] Añadir la clase series__item--favorite en función de si es favorita
+   [] Quitar la clase de favoritos
+[] Cachear datos del servidor en local storage
+   [] Guardar en local storage
+   [] Comprobar y recuperar de local storage
+[] Bonus: Borrar favoritos
+[] Bonus: Afinar la maquetación
+[] Bonus: Guardar favs en local storage
