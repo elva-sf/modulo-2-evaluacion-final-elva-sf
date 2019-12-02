@@ -124,10 +124,10 @@ En principio puedes descargar todos los archivos fuera de **\_src/** y sustituir
 Echas de menos que el kit haga algo en concreto? Pidelo sin problema a través de los Issues o si te animas a mejorarlo mándanos un PR :)
 
 ESTRUCTURA DEL EJERCICIO:
-[] Estructura básica de HTML
-[] Búsqueda
-   [] Fetch para traer los datos
-   [] Parsear o adaptar los datos del servidor
+[x] Estructura básica de HTML
+[] Búsqueda -> ramita "search"
+   [x] Fetch para traer los datos
+   [x] Parsear o adaptar los datos del servidor
    [] Pintar
 [] CSS
 [] Marcar como favoritos
