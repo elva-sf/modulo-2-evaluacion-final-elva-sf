@@ -8,7 +8,6 @@ let series = [];
 let searchSeries;
 let showSeries;
 let addFavorite;
-let idEl;
 let favoritesSeries = [];
 
 
@@ -39,6 +38,7 @@ searchSeries = function (ev) {
 
 // PINTAR SERIES:
 showSeries = function (series) {
+    searchContainer.innerHTML = "";
     /* console.log(series); */
     let ulEl, liEl, imgEl, h3El, textNode;
 
@@ -49,7 +49,6 @@ showSeries = function (series) {
 
         liEl = document.createElement("li");
         liEl.classList.add("js-li");
-        liEl.classList.add("js-selected");
 
         imgEl = document.createElement("img");
         imgEl.classList.add("js-img");
@@ -61,7 +60,7 @@ showSeries = function (series) {
         /* console.log(imgEl); */
 
         h3El = document.createElement("h3");
-        h3El.classList.add("js-h3");
+        h3El.classList.add("js-title");
 
         textNode = document.createTextNode(`${serie.show.name}`);
         /* console.log(textNode); */
@@ -70,7 +69,6 @@ showSeries = function (series) {
         liEl.appendChild(imgEl);
         liEl.appendChild(h3El);
         liEl.id = serie.show.id;
-        idEl = liEl.id;
         ulEl.appendChild(liEl);
         /* console.log(ulEl); */
         searchContainer.appendChild(ulEl);
@@ -81,14 +79,78 @@ showSeries = function (series) {
     }
 }
 // AÑADIR A FAVORITOS:
-// 2º Toggle series
+// 2º Añadir series
 addFavorite = function (ev) {
-    console.log("holi", ev.currentTarget);
+    let idEl, favoriteIndex, isFavorite, newUl, newLi, newImg, newH3, newText;
 
+    favoritesSeries.push(parseInt(ev.currentTarget.id));
+    /*   console.log(ev.currentTarget.id, favoritesSeries) */
+    for (let serie of series) {
+        newUl = document.createElement("ul");
+        newUl.classList.add("js-series");
+        newLi = document.createElement("li");
+        newLi.classList.add("js-li")
+        newImg = document.createElement("img");
+        newImg.classList.add("js-img");
+        if (serie.show.image !== null) {
+            newImg.src = serie.show.image.medium;
+        } else {
+            newImg.src = ("https://via.placeholder.com/210x295/ffffff/666666/?text = TV");
+        }
+        newH3 = document.createElement("h3");
+        newH3.classList.add("js-title");
+        newText = document.createTextNode(`${serie.show.name}`);
+        idEl = serie.show.id;
+
+        favoriteIndex = favoritesSeries.indexOf(idEl);
+        isFavorite = favoriteIndex !== -1;
+        /*  console.log("Fav:", favoritesSeries, "Id actual:", idEl, "¿Está:?", isFavorite); */
+
+        if (isFavorite === true) {
+            newLi.classList.add("js-selected");
+
+        }
+
+
+
+        console.log(favoritesSeries, idEl)
+    }
+
+    /*  showSeries();
+     searchSeries(); */
+
+
+    let favObject = {}, foundObject = false;
+
+    for (let serie of series) {
+        let idEl = serie.show.id;
+    }
+}
+/*  for (let i = 0; i < favoritesSeries.length; i++) {
+     //Si la encuentras...
+     if (idNum === favoritesSeries[i].id) {
+         ev.currentTarget.classList.toggle('js-selected');
+
+         favoritesSeries.splice(i, 1);
+
+         foundObject = true;
+     }
+ }
+
+ //Si la ha encontrado antes: no la agrega y no entra dentro de esta condición.
+ if (!foundObject) {
+
+     ev.currentTarget.classList.toggle('js-selected');
+
+
+   
+
+     favoritesSeries.push(favObject);
+     console.log("holita", favObject);
+ }
 
 }
-
+*/
 
 // ESCUCHAR BOTÓN:
 buttonElement.addEventListener("click", searchSeries);
-

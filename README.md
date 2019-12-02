@@ -131,10 +131,10 @@ ESTRUCTURA DEL EJERCICIO:
    [x] Parsear o adaptar los datos del servidor
    [x] Pintar
 [] Marcar como favoritos -> ramita "favorites"
-   [] Escuchar click en una serie
-   [] Identificar la serie que es
-   [] Guardar las series favoritas en otro array
-   [] Añadir la clase series__item--favorite en función de si es favorita
+   [x] Escuchar click en una serie
+   [x] Identificar la serie que es
+   [x] Guardar las series favoritas en otro array
+   [] Añadir la clase js-selected en función de si es favorita
    [] Quitar la clase de favoritos
 [] Cachear datos del servidor en local storage
    [] Guardar en local storage
