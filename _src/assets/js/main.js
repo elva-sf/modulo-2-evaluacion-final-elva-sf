@@ -18,7 +18,7 @@ searchSeries = function (ev) {
         })
         .then(function (serverData) {
             series = serverData;
-            console.log(series);
+            /* console.log(series); */
             if (series.length > 0) {
                 showSeries(series);
             } else {
@@ -32,8 +32,41 @@ searchSeries = function (ev) {
 };
 
 //Pintar Series
-showSeries = function () {
+showSeries = function (series) {
+    /* console.log(series); */
+    let ulEl, liEl, imgEl, h3El, textNode;
 
+    for (let serie of series) {
+        ulEl = document.createElement("ul");
+        ulEl.classList.add("js-series");
+        /* console.log(serie.show.image); */
+
+        liEl = document.createElement("li");
+        liEl.classList.add("js-li")
+
+        imgEl = document.createElement("img");
+        imgEl.classList.add("js-img");
+        if (serie.show.image !== null) {
+            imgEl.src = serie.show.image.medium;
+        } else {
+            imgEl.src = ("https://via.placeholder.com/210x295/ffffff/666666/?text = TV");
+        }
+        /* console.log(imgEl); */
+
+
+        h3El = document.createElement("h3");
+        h3El.classList.add("js-h3");
+
+        textNode = document.createTextNode(`${serie.show.name}`);
+        /* console.log(textNode); */
+
+        h3El.appendChild(textNode);
+        liEl.appendChild(imgEl);
+        liEl.appendChild(h3El);
+        ulEl.appendChild(liEl);
+        /* console.log(ulEl); */
+        searchContainer.appendChild(ulEl);
+    }
 }
 
 //Escuchar
