@@ -1,3 +1,12 @@
+* {
+    font-family: Tahoma, sans-serif;
+    
+}
+
+.body{
+    background-color: burlywood;
+}
+
 .header {
     color: maroon;
 &__title{
@@ -11,30 +20,51 @@
 }
 &__button{
     cursor: pointer;
+    &:hover {
+        background-color: gray;
+        border-color: brown;
+    }
 }
 }
 .main{
-    color: brown
+    color: brown;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    
 
 }
 .favorites{
+    &__titleFav{
+min-width: 200px;
+border: palevioletred solid;
+    }
     &__containerFav{
+        background-color:palevioletred;
+width: 40vw;
+
 
     }
-&__titleFav{
 
-}
 }
 .searchSeries{
 &__containerSeries{
     background-color:cadetblue;
+    width: 60vw;
+    
 }
 &__titleSearch{
-
+    min-width: 400px;
+    border: cornflowerblue solid;
+ 
 }
 }
 .js-selected{
     background-color: magenta;
     border: solid 10px purple;
+
+
     
 }

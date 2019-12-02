@@ -88,6 +88,7 @@ showSeries = function (series) {
         liEl.appendChild(imgEl);
         liEl.appendChild(h3El);
         liEl.addEventListener("click", addFavorites);
+        liEl.addEventListener("click", showFavorites);
         ulEl.appendChild(liEl);
     }
     searchContainer.appendChild(ulEl);
@@ -97,20 +98,16 @@ showFavorites = function () {
     favContainer.innerHTML = "";
 
     newUl = document.createElement("div");
-    newUl.classList.add("js-series");
+    newUl.classList.add("js-favorites");
     for (let serie of series) {
 
         newLi = document.createElement("li");
-        newLi.classList.add("js-li");
+        newLi.classList.add("js-NewLi");
 
-        for (let i = 0; i < favoritesSeries.length; i++) {
-            if (`${serie.show.id}` === favoritesSeries[i].id) {
-                newLi.classList.toggle("js-selected");
-            }
-        }
+
 
         newImg = document.createElement("img");
-        newImg.classList.add("js-img");
+        newImg.classList.add("js-newImg");
         if (serie.show.image !== null) {
             newImg.src = serie.show.image.medium;
         } else {
@@ -118,7 +115,7 @@ showFavorites = function () {
         }
 
         newH3 = document.createElement("h3");
-        newH3.classList.add("js-title");
+        newH3.classList.add("js-NewTitle");
 
         newTextNode = document.createTextNode(`${serie.show.name}`);
         newLi.id = serie.show.id;
@@ -127,10 +124,10 @@ showFavorites = function () {
 
         newLi.appendChild(newImg);
         newLi.appendChild(newH3);
-        newLi.addEventListener("click", addFavorites);
+        /*  newLi.addEventListener("click", addFavorites); */
         newUl.appendChild(newLi);
     }
-    searchContainer.appendChild(newUl);
+    favContainer.appendChild(newUl);
 }
 
 addFavorites = function (ev) {
@@ -153,9 +150,8 @@ addFavorites = function (ev) {
         favObject["img"] = ev.currentTarget.querySelector(".js-img").src;
         favObject["title"] = ev.currentTarget.querySelector(".js-title").innerHTML;
         favoritesSeries.push(favObject);
-
-        addToLs();
     }
+    addToLs();
 };
 
 // ESCUCHAR BOTÓN:
