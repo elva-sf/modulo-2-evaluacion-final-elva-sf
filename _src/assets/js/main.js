@@ -17,6 +17,7 @@ let reset;
 let closeFav;
 let listenClose;
 
+//LOCAL STORAGE:
 addToLs = function() {
   localStorage.setItem("favorite", JSON.stringify(favoritesSeries));
 };
@@ -91,6 +92,8 @@ showSeries = function(series) {
   }
   searchContainer.appendChild(ulEl);
 };
+
+//PINTAR FAVORITOS:
 showFavorites = function() {
   let newUl, newLi, newImg, newH3, newTextNode, closeBtn, closeTextNode;
 
@@ -133,38 +136,8 @@ showFavorites = function() {
   favContainer.appendChild(newUl);
 };
 
-/* closeFav = function(ev) {
-  newUl.innerHTML = "";
-  console.log("oleee");
-}; */
-/* 
-closeFav = function(ev) {
-  newUl.innerHTML = "";
-
-  let favObject = {},
-    foundObj = false,
-    idEl;
-
-  idEl = ev.currentTarget.getAttribute("serieId");
-
-  for (let i = 0; i < favoritesSeries.length; i++) {
-    if (idEl === favoritesSeries[i].id) {
-      favoritesSeries.splice(i, 1);
-      foundObj = true;
-      favObject["id"] = ev.currentTarget.getAttribute("serieId");
-      favObject["img"] = ev.currentTarget.querySelector(".js-img").src;
-      favObject["title"] = ev.currentTarget.querySelector(
-        ".js-title"
-      ).innerHTML;
-      favoritesSeries.slice(favObject, 1);
-    }
-  }
-  console.log(ev.currentTarget, ev.Target);
-}; */
-
+//AÑADIR A LISTA DE FAVORITOS:
 addFavorites = function(ev) {
-  debugger;
-
   let favObject = {},
     foundObj = false,
     idEl;
@@ -190,6 +163,7 @@ addFavorites = function(ev) {
   addToLs();
 };
 
+//RESET:
 reset = function() {
   favoritesSeries = [];
   series = [];
@@ -199,6 +173,7 @@ reset = function() {
 };
 
 showFavorites();
-// ESCUCHAR BOTÓN:
+
+// ESCUCHAR BOTONES GENERALES:
 buttonElement.addEventListener("click", searchSeries);
 resetBtn.addEventListener("click", reset);

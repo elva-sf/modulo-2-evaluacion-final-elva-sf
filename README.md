@@ -139,6 +139,6 @@ ESTRUCTURA DEL EJERCICIO:
 [x] Cachear datos del servidor en local storage -> ramita "fixer"
 [x] Guardar en local storage
 [x] Comprobar y recuperar de local storage
-[] Bonus: Borrar favoritos
+[x] Bonus: Borrar favoritos -> ramita "reset"
 [x] Bonus: Afinar la maquetación -> ramita "styles"
 [x] Bonus: Guardar favs en local storage

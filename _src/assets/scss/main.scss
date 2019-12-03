@@ -45,7 +45,6 @@
   }
 }
 .main {
-  /* margin: 0 10px 0 0; */
   color: brown;
   font-size: 14px;
   display: flex;
@@ -117,9 +116,6 @@
 .js-series {
   list-style: none;
   padding: 30px;
-  /* display: flex;
-  flex-wrap: wrap;
-  flex-direction: center; */
 }
 
 .js-li {
@@ -134,7 +130,7 @@
   text-transform: uppercase;
 }
 
-// Añadir/quitar borde (JS)
+// Añadir/quitar clase (JS)
 .js-selected {
   background-color: rgb(212, 183, 108);
   border: solid 10px purple;
