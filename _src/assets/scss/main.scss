@@ -12,9 +12,12 @@
 .header {
   color: maroon;
   text-transform: uppercase;
-  margin: 20px 30px;
+  padding: 20px 30px 0 30px;
+
   &__title {
     margin-bottom: 20px;
+    border-bottom: solid 8px rgb(212, 183, 108);
+    width: 450px;
   }
   &__form {
   }
@@ -30,9 +33,19 @@
       border-color: brown;
     }
   }
+  &__reset {
+    margin-top: 30px;
+    border-radius: 50%;
+    background-color: rgb(212, 183, 108);
+    border-color: brown;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(16, 150, 132);
+    }
+  }
 }
 .main {
-  margin: 20px 10px;
+  /* margin: 0 10px 0 0; */
   color: brown;
   font-size: 14px;
   display: flex;
@@ -43,22 +56,22 @@
 
 .favorites {
   &__titleFav {
-    min-width: 200px;
     border: brown solid;
+    background-color: white;
   }
   &__containerFav {
     background-color: rgba(216, 143, 168, 0.856);
-    width: 40vw;
+    width: 35vw;
   }
 }
 .searchSeries {
   &__titleSearch {
-    min-width: 400px;
     border: brown solid;
+    background-color: white;
   }
   &__containerSeries {
     background-color: rgb(59, 105, 107);
-    width: 60vw;
+    width: 50vw;
   }
 }
 
@@ -66,21 +79,36 @@
 
 //Contenedor de favoritos (JS)
 .js-favContainer {
+  display: inline-block;
 }
 .js-favorites {
   padding: 30px;
   list-style: none;
 }
 .js-NewLi {
+  margin-bottom: 20px;
 }
 .js-newImg {
   border: solid magenta 10px;
+  width: 150px;
 }
 .js-NewTitle {
   border: solid purple;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   background-color: cornsilk;
   text-transform: uppercase;
+  width: 150px;
+  margin: 0 auto;
+}
+.js-closeBtn {
+  border-radius: 50%;
+  background-color: rgb(218, 202, 162);
+  color: brown;
+  border-color: brown;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(16, 150, 132);
+  }
 }
 
 // Contenedor del buscador (JS)
@@ -92,19 +120,19 @@
 }
 
 .js-li {
+  margin-bottom: 30px;
 }
 .js-img {
   border: solid brown;
 }
 .js-title {
-  color: white;
+  color: black;
   border-bottom: solid brown;
-  margin-bottom: 30px;
   text-transform: uppercase;
 }
 
 // Añadir/quitar borde (JS)
 .js-selected {
-  background-color: magenta;
+  background-color: rgb(212, 183, 108);
   border: solid 10px purple;
 }

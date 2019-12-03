@@ -4,6 +4,7 @@ let buttonElement = document.querySelector(".js-button");
 let inputElement = document.querySelector(".js-input");
 let searchContainer = document.querySelector(".js-searchContainer");
 let favContainer = document.querySelector(".js-favContainer");
+let resetBtn = document.querySelector(".js-reset");
 let series = [];
 let searchSeries;
 let showSeries;
@@ -12,6 +13,9 @@ let addFavorites;
 let favoritesSeries = [];
 let addToLs;
 let getToLs;
+let reset;
+let closeFav;
+let listenClose;
 
 addToLs = function() {
   localStorage.setItem("favorite", JSON.stringify(favoritesSeries));
@@ -88,7 +92,8 @@ showSeries = function(series) {
   searchContainer.appendChild(ulEl);
 };
 showFavorites = function() {
-  let newUl, newLi, newImg, newH3, newTextNode;
+  let newUl, newLi, newImg, newH3, newTextNode, closeBtn, closeTextNode;
+
   favContainer.innerHTML = "";
 
   newUl = document.createElement("ul");
@@ -112,14 +117,50 @@ showFavorites = function() {
     newTextNode = document.createTextNode(`${favorite.title}`);
     newLi.id = favorite.id;
     newLi.setAttribute("serieId", favorite.id);
-    newH3.appendChild(newTextNode);
 
+    closeBtn = document.createElement("button");
+    closeBtn.classList.add("js-closeBtn");
+    closeTextNode = document.createTextNode("X");
+    closeBtn.appendChild(closeTextNode);
+
+    newH3.appendChild(newTextNode);
     newLi.appendChild(newImg);
     newLi.appendChild(newH3);
+    newLi.appendChild(closeBtn);
     newUl.appendChild(newLi);
+    closeBtn.addEventListener("click", closeFav);
   }
   favContainer.appendChild(newUl);
 };
+
+/* closeFav = function(ev) {
+  newUl.innerHTML = "";
+  console.log("oleee");
+}; */
+/* 
+closeFav = function(ev) {
+  newUl.innerHTML = "";
+
+  let favObject = {},
+    foundObj = false,
+    idEl;
+
+  idEl = ev.currentTarget.getAttribute("serieId");
+
+  for (let i = 0; i < favoritesSeries.length; i++) {
+    if (idEl === favoritesSeries[i].id) {
+      favoritesSeries.splice(i, 1);
+      foundObj = true;
+      favObject["id"] = ev.currentTarget.getAttribute("serieId");
+      favObject["img"] = ev.currentTarget.querySelector(".js-img").src;
+      favObject["title"] = ev.currentTarget.querySelector(
+        ".js-title"
+      ).innerHTML;
+      favoritesSeries.slice(favObject, 1);
+    }
+  }
+  console.log(ev.currentTarget, ev.Target);
+}; */
 
 addFavorites = function(ev) {
   let favObject = {},
@@ -127,7 +168,6 @@ addFavorites = function(ev) {
     idEl;
 
   idEl = ev.currentTarget.getAttribute("serieId");
-  console.log(idEl);
 
   for (let i = 0; i < favoritesSeries.length; i++) {
     if (idEl === favoritesSeries[i].id) {
@@ -135,6 +175,7 @@ addFavorites = function(ev) {
       foundObj = true;
     }
   }
+
   if (!foundObj) {
     ev.currentTarget.classList.toggle("js-selected");
     favObject["id"] = ev.currentTarget.getAttribute("serieId");
@@ -147,6 +188,15 @@ addFavorites = function(ev) {
   addToLs();
 };
 
+reset = function() {
+  favoritesSeries = [];
+  series = [];
+  showSeries(series);
+  showFavorites();
+  addToLs();
+};
+
 showFavorites();
 // ESCUCHAR BOTÓN:
 buttonElement.addEventListener("click", searchSeries);
+resetBtn.addEventListener("click", reset);

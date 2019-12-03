@@ -126,19 +126,19 @@ Echas de menos que el kit haga algo en concreto? Pidelo sin problema a través d
 ESTRUCTURA DEL EJERCICIO:
 [x] Estructura básica de HTML
 [x] CSS básico
-[x] Búsqueda -> ramita "search" 
-   [x] Fetch para traer los datos
-   [x] Parsear o adaptar los datos del servidor
-   [x] Pintar
+[x] Búsqueda -> ramita "search"
+[x] Fetch para traer los datos
+[x] Parsear o adaptar los datos del servidor
+[x] Pintar
 [x] Marcar como favoritos -> ramita "favorites" // nueva ramita "fixer"
-   [x] Escuchar click en una serie
-   [x] Identificar la serie que es
-   [x] Guardar las series favoritas en otro array
-   [x] Añadir la clase js-selected en función de si es favorita
-   [x] Quitar la clase de favoritos
+[x] Escuchar click en una serie
+[x] Identificar la serie que es
+[x] Guardar las series favoritas en otro array
+[x] Añadir la clase js-selected en función de si es favorita
+[x] Quitar la clase de favoritos
 [x] Cachear datos del servidor en local storage -> ramita "fixer"
-   [x] Guardar en local storage
-   [x] Comprobar y recuperar de local storage
+[x] Guardar en local storage
+[x] Comprobar y recuperar de local storage
 [] Bonus: Borrar favoritos
-[] Bonus: Afinar la maquetación -> ramita "styles"
+[x] Bonus: Afinar la maquetación -> ramita "styles"
 [x] Bonus: Guardar favs en local storage
