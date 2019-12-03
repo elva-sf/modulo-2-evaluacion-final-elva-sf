@@ -1,40 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Evaluación Final Modulo 2 - Elva</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Evaluación Final Modulo 2 - Elva</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
 
-  <link rel="stylesheet" href="./assets/css/main.css" />
-</head>
+  <body class="body">
+    <header class="header">
+      <h1 class="header__title">Buscador de series</h1>
+      <form class="header__form js-form">
+        <input class="header__input js-input" type="text" value="girls" />
+        <button class="header__button js-button" type="submit">Search</button>
+      </form>
+    </header>
+    <main class="main">
+      <aside class="main__seriesFav favorites js-favorites">
+        <h2 class="favorites__titleFav">Mis series favoritas</h2>
+        <div class="favorites__containerFav js-favContainer"></div>
+      </aside>
+      <section class="main__seriesList searchSeries js-search">
+        <h2 class="searchSeries__titleSearch">Mi búsqueda</h2>
 
-<body class="body">
-  <header class="header">
-    <h1 class="header__title">Buscador de series</h1>
-    <form class="header__form js-form">
-      <input class="header__input js-input" type="text" value="girls">
-      <button class="header__button js-button" type="submit">Search</button>
-    </form>
-  </header>
-  <main class="main">
-    <aside class="main__seriesFav favorites js-favorites">
-      <h2 class="favorites__titleFav">Mis series favoritas</h2>
-      <div class="favorites__containerFav js-favContainer">
-        <hr>
-      </div>
-    </aside>
-    <section class="main__seriesList searchSeries js-search">
-      <h2 class="searchSeries__titleSearch">Mi búsqueda</h2>
-      <hr>
-      <div class="searchSeries__containerSeries js-searchContainer">
-
-      </div>
-    </section>
-
-
-  </main>
-  <script src="./assets/js/main.js"></script>
-</body>
-
+        <div class="searchSeries__containerSeries js-searchContainer"></div>
+      </section>
+    </main>
+    <script src="./assets/js/main.js"></script>
+  </body>
 </html>

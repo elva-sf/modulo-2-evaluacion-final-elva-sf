@@ -140,5 +140,5 @@ ESTRUCTURA DEL EJERCICIO:
    [x] Guardar en local storage
    [x] Comprobar y recuperar de local storage
 [] Bonus: Borrar favoritos
-[] Bonus: Afinar la maquetación
+[] Bonus: Afinar la maquetación -> ramita "styles"
 [x] Bonus: Guardar favs en local storage

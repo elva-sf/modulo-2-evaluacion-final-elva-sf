@@ -1,70 +1,110 @@
 * {
-    font-family: Tahoma, sans-serif;
-    
+  margin: 0;
+  font-family: Tahoma, serif;
+  font-style: italic;
+  box-sizing: border-box;
 }
 
-.body{
-    background-color: burlywood;
+.body {
+  background-color: rgb(173, 173, 173);
 }
 
 .header {
-    color: maroon;
-&__title{
-
-}
-&__form{
-
-}
-&__input{
-
-}
-&__button{
+  color: maroon;
+  text-transform: uppercase;
+  margin: 20px 30px;
+  &__title {
+    margin-bottom: 20px;
+  }
+  &__form {
+  }
+  &__input {
+    border: brown solid 0.5px;
+    padding: 2px 5px;
+  }
+  &__button {
+    text-transform: uppercase;
     cursor: pointer;
     &:hover {
-        background-color: gray;
-        border-color: brown;
+      background-color: rgb(212, 183, 108);
+      border-color: brown;
     }
+  }
 }
+.main {
+  margin: 20px 10px;
+  color: brown;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
 }
-.main{
-    color: brown;
-    font-size: 14px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: center;
-    
 
+.favorites {
+  &__titleFav {
+    min-width: 200px;
+    border: brown solid;
+  }
+  &__containerFav {
+    background-color: rgba(216, 143, 168, 0.856);
+    width: 40vw;
+  }
 }
-.favorites{
-    &__titleFav{
-min-width: 200px;
-border: palevioletred solid;
-    }
-    &__containerFav{
-        background-color:palevioletred;
-width: 40vw;
-
-
-    }
-
-}
-.searchSeries{
-&__containerSeries{
-    background-color:cadetblue;
-    width: 60vw;
-    
-}
-&__titleSearch{
+.searchSeries {
+  &__titleSearch {
     min-width: 400px;
-    border: cornflowerblue solid;
- 
+    border: brown solid;
+  }
+  &__containerSeries {
+    background-color: rgb(59, 105, 107);
+    width: 60vw;
+  }
 }
+
+// JAVASCRIPT
+
+//Contenedor de favoritos (JS)
+.js-favContainer {
 }
-.js-selected{
-    background-color: magenta;
-    border: solid 10px purple;
+.js-favorites {
+  padding: 30px;
+  list-style: none;
+}
+.js-NewLi {
+}
+.js-newImg {
+  border: solid magenta 10px;
+}
+.js-NewTitle {
+  border: solid purple;
+  margin-bottom: 20px;
+  background-color: cornsilk;
+  text-transform: uppercase;
+}
 
+// Contenedor del buscador (JS)
+.js-searchContainer {
+}
+.js-series {
+  list-style: none;
+  padding: 30px;
+}
 
-    
+.js-li {
+}
+.js-img {
+  border: solid brown;
+}
+.js-title {
+  color: white;
+  border-bottom: solid brown;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+// Añadir/quitar borde (JS)
+.js-selected {
+  background-color: magenta;
+  border: solid 10px purple;
 }
