@@ -116,10 +116,10 @@ showFavorites = function() {
 
     newTextNode = document.createTextNode(`${favorite.title}`);
     newLi.id = favorite.id;
-    newLi.setAttribute("serieId", favorite.id);
 
     closeBtn = document.createElement("button");
     closeBtn.classList.add("js-closeBtn");
+    closeBtn.setAttribute("serieId", favorite.id);
     closeTextNode = document.createTextNode("X");
     closeBtn.appendChild(closeTextNode);
 
@@ -128,7 +128,7 @@ showFavorites = function() {
     newLi.appendChild(newH3);
     newLi.appendChild(closeBtn);
     newUl.appendChild(newLi);
-    closeBtn.addEventListener("click", closeFav);
+    closeBtn.addEventListener("click", addFavorites);
   }
   favContainer.appendChild(newUl);
 };
@@ -163,6 +163,8 @@ closeFav = function(ev) {
 }; */
 
 addFavorites = function(ev) {
+  debugger;
+
   let favObject = {},
     foundObj = false,
     idEl;

@@ -117,10 +117,13 @@
 .js-series {
   list-style: none;
   padding: 30px;
+  /* display: flex;
+  flex-wrap: wrap;
+  flex-direction: center; */
 }
 
 .js-li {
-  margin-bottom: 30px;
+  margin: 0 10px 30px 10px;
 }
 .js-img {
   border: solid brown;
