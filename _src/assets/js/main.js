@@ -17,11 +17,13 @@ let getToLs;
 addToLs = function () {
     localStorage.setItem("favorite", JSON.stringify(favoritesSeries));
 }
+
 getToLs = function () {
 
     favoritesSeries = JSON.parse(localStorage.getItem("favorite")) || [];
 }
 getToLs();
+
 
 // SEARCH:
 searchSeries = function (ev) {
@@ -36,7 +38,7 @@ searchSeries = function (ev) {
         })
         .then(function (serverData) {
             series = serverData;
-            /* console.log(series); */
+
             if (series.length > 0) {
                 showSeries(series);
             } else {
@@ -100,12 +102,9 @@ showFavorites = function () {
     newUl = document.createElement("div");
     newUl.classList.add("js-favorites");
     for (let favorite of favoritesSeries) {
-        /* console.log("holii", favoritesSeries) */
 
         newLi = document.createElement("li");
         newLi.classList.add("js-NewLi");
-
-
 
         newImg = document.createElement("img");
         newImg.classList.add("js-newImg");
@@ -152,7 +151,10 @@ addFavorites = function (ev) {
         favoritesSeries.push(favObject);
     }
     addToLs();
+
 };
 
+
+showFavorites();
 // ESCUCHAR BOTÓN:
 buttonElement.addEventListener("click", searchSeries);
