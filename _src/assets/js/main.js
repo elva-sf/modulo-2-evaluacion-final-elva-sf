@@ -99,7 +99,8 @@ showFavorites = function () {
 
     newUl = document.createElement("div");
     newUl.classList.add("js-favorites");
-    for (let serie of series) {
+    for (let favorite of favoritesSeries) {
+        /* console.log("holii", favoritesSeries) */
 
         newLi = document.createElement("li");
         newLi.classList.add("js-NewLi");
@@ -108,8 +109,8 @@ showFavorites = function () {
 
         newImg = document.createElement("img");
         newImg.classList.add("js-newImg");
-        if (serie.show.image !== null) {
-            newImg.src = serie.show.image.medium;
+        if (favorite.img !== null) {
+            newImg.src = favorite.img;
         } else {
             newImg.src = ("https://via.placeholder.com/210x295/ffffff/666666/?text = TV");
         }
@@ -117,14 +118,13 @@ showFavorites = function () {
         newH3 = document.createElement("h3");
         newH3.classList.add("js-NewTitle");
 
-        newTextNode = document.createTextNode(`${serie.show.name}`);
-        newLi.id = serie.show.id;
-        newLi.setAttribute("serieId", serie.show.id);
+        newTextNode = document.createTextNode(`${favorite.title}`);
+        newLi.id = favorite.id;
+        newLi.setAttribute("serieId", favorite.id);
         newH3.appendChild(newTextNode);
 
         newLi.appendChild(newImg);
         newLi.appendChild(newH3);
-        /*  newLi.addEventListener("click", addFavorites); */
         newUl.appendChild(newLi);
     }
     favContainer.appendChild(newUl);
